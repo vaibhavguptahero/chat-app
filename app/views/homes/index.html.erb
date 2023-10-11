@@ -1,0 +1,32 @@
+<div class="card border-0">
+	<div class="card-title text-center mt-4 mb-4"><h1>USERS</h1></div>
+</div>
+
+<div class="container">
+    <table class="table table-hover">
+    <thead class="table-danger">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each_with_index do |user,i|%>
+            <% if current_user.email !=user.email%>
+            <tr>
+                <th scope="row"><%=i+1%></th>
+                <td><%=user.name%><td>
+                <td><%=user.age%><td>
+                <% if @friends_email.include?user.email%>
+                    <td>ADDED</td>
+                <% else %>
+                    <td><%= link_to 'Add' ,new_friends_path(:add_friend => user) , class:"btn btn-primary"%></td>
+                <% end %>
+            </tr>
+            <%end%>
+        <%end%>
+    </tbody>
+    </table>
+</div>
