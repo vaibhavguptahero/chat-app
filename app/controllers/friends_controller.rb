@@ -1,6 +1,6 @@
 class FriendsController < ApplicationController
 	def index
-		user=User.find(params[:id])
+		user=User.find(current_user.id)
 		@added_friends=Friend.where(user_id: user)
 		@requested_friends=Friend.where(user_id_2: user)
 	    @friends_email=@added_friends.pluck(:email)

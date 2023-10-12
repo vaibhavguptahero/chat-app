@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  get 'friends/index'
-  get 'friends/new'
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   resources :friends
   resources :homes
+  resources :messages
+  get 'friends/index'
   root "homes#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
